@@ -1,0 +1,78 @@
+
+.company-detail {
+  padding: 20px;
+  background-color: rgb(240, 240, 240);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 800px; 
+  margin: 20px auto; 
+}
+
+
+.company-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px; 
+}
+
+.company-logo {
+  width: 100px; 
+  height: auto; 
+  margin-right: 20px; 
+}
+
+.company-name {
+  font-size: 2rem; 
+  color: rgb(80, 80, 80); 
+}
+
+
+.company-description {
+  margin: 10px 0; 
+  color: rgb(100, 100, 100); 
+  line-height: 1.5; 
+}
+
+
+.company-info {
+  margin: 20px 0; 
+  padding: 15px; 
+  background-color: white; 
+  border-radius: 5px; 
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
+}
+
+
+.company-card {
+  background-color: white; 
+  padding: 15px; 
+  margin: 10px 0; 
+  border-radius: 5px; 
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
+}
+
+.company-title {
+  font-size: 1.5rem; 
+  color: rgb(50, 50, 50); 
+  margin: 0; 
+}
+
+.company-description {
+  color: rgb(80, 80, 80); 
+  margin: 5px 0; 
+}
+
+
+.apply-button {
+  background-color: rgb(80, 80, 240); 
+  color: white; 
+  border: none; 
+  padding: 10px 15px; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s; 
+}
+
+.apply-button:hover {
+  background-color: rgb(60, 60, 220); 
+}
