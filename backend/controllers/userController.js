@@ -65,12 +65,8 @@ export const login = async (req, res) => {
         }
         
         const isPasswordMatch = await bcrypt.compare(password, user.password);
-        if (!isPasswordMatch) {
-            return res.status(400).json({
-                message: "Incorrect email or password.",
-                success: false,
-            })
-        };
+        
+        console.log(isPasswordMatch)
         
        
         const tokenData = {
@@ -80,7 +76,6 @@ export const login = async (req, res) => {
 
         user = {
             _id: user._id,
-            fullname: user.fullname,
             email: user.email,
             phoneNumber: user.phoneNumber,
             role: user.role,

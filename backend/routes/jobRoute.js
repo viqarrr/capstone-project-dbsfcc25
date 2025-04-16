@@ -4,7 +4,7 @@ import { getAdminJobs, getAllJobs, getJobById, postJob, deleteJob } from "../con
 
 const router = express.Router();
 
-router.route("/").post(postJob).get(isAuthenticated,getAllJobs);
+router.route("/").post(postJob).get(getAllJobs);
 router.route("/admin").get(getAdminJobs);
 router.route("/:id").get(getJobById).delete(deleteJob);
 
