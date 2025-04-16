@@ -27,10 +27,7 @@ const CompanyList = () => {
   return (
     <div>
       <div className="title-bar">
-        <h2>Perusahaan menarik <span style={{ color: 'grey' }}>(206)</span></h2>
-        <div style={{ position: 'relative' }}>
-          <button className="sort-button">Terbaru ▾</button>
-        </div>
+        <h2>Perusahaan menarik <span style={{ color: 'grey' }}>({companies.length})</span></h2>
       </div>
 
       <div className="section">

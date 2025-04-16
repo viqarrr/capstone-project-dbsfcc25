@@ -2,9 +2,30 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../context/authContext";
 import { Link, useNavigate } from "react-router-dom";
-import { onLogin } from "../services/api";
+import Swal from 'sweetalert2'
+import axios from "axios";
 
 const LoginForm = () => {
+  const onLogin = async (email, password) => {
+    try {
+        const requestBody = { email, password };
+        console.log(requestBody)
+        const response = await axios.post(`http://localhost:8000/api/v1/users/login`, requestBody, {
+          withCredentials: true
+      });
+
+      console.log(response)
+
+    } catch (error) {
+        console.error(error);
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: error.message.response
+        });
+    }
+  };
+  
   const {
     register,
     handleSubmit,
@@ -27,7 +48,7 @@ const LoginForm = () => {
         <h2>Masuk</h2>
         <form id="loginForm" onSubmit={handleSubmit(onSubmit)}>
           <div className="input-wrapper">
-            <label htmlFor="username">Username / E-mail</label>
+            <label htmlFor="username">E-mail</label>
             <div className="input-field">
               <span className="material-symbols-outlined">person</span>
               <input
@@ -48,7 +69,6 @@ const LoginForm = () => {
                 id="password"
                 placeholder="Tulis kata sandi mu disini"
                 {...register("password", { required: "Password is required" })}
-                validation
               />
               {errors.password && (
                 <p className="error">{errors.password.message}</p>

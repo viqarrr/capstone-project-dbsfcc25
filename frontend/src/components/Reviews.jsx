@@ -11,7 +11,7 @@ const Reviews = () => {
             mudah!"
           </p>
           <div className="user">
-            <span class="material-symbols-outlined">account_circle</span>
+            <span className="material-symbols-outlined">account_circle</span>
             <div>
               <h4>Valencia Queena</h4>
               <p>Fresh Graduate</p>
@@ -24,7 +24,7 @@ const Reviews = () => {
             sesuai dengan keahlian saya."
           </p>
           <div className="user">
-            <span class="material-symbols-outlined">account_circle</span>
+            <span className="material-symbols-outlined">account_circle</span>
             <div>
               <h4>Rudi Hartono</h4>
               <p>Software Engineer</p>
@@ -37,7 +37,7 @@ const Reviews = () => {
             bermanfaat!"
           </p>
           <div className="user">
-            <span class="material-symbols-outlined">account_circle</span>
+            <span className="material-symbols-outlined">account_circle</span>
             <div>
               <h4>Maria Sari</h4>
               <p>Marketing Specialist</p>
@@ -50,7 +50,7 @@ const Reviews = () => {
             responsif."
           </p>
           <div className="user">
-            <span class="material-symbols-outlined">account_circle</span>
+            <span className="material-symbols-outlined">account_circle</span>
             <div>
               <h4>Andi Prasetyo</h4>
               <p>Data Analyst</p>
@@ -63,7 +63,7 @@ const Reviews = () => {
             ini!"
           </p>
           <div className="user">
-          <span class="material-symbols-outlined">account_circle</span>
+          <span className="material-symbols-outlined">account_circle</span>
             <div>
               <h4>Intan Permata</h4>
               <p>Graphic Designer</p>
@@ -76,7 +76,7 @@ const Reviews = () => {
             merekomendasikannya!"
           </p>
           <div className="user">
-            <span class="material-symbols-outlined">account_circle</span>
+            <span className="material-symbols-outlined">account_circle</span>
             <div>
               <h4>Fajar Nugroho</h4>
               <p>Content Writer</p>

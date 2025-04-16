@@ -9,12 +9,7 @@ const Jobs = () => {
   return (
     <div>
       <Navbar/>
-      <Hero />
-      <div className="title-bar">
-        <h2>
-          Lowongan Pekerjaan <span style={{ color: "grey" }}>(206)</span>
-        </h2>
-      </div>
+      <Hero search/>
       <JobList />
       <Footer />
     </div>

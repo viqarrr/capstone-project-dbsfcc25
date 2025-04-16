@@ -9,7 +9,7 @@ const TopCompanies = () => {
       try {
         const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/companies`);
         console.log(response.data.companies);
-        setTopCompanies(response.data.companies.slice(0, 5));
+        setTopCompanies(response.data.companies.slice(0, 6));
       } catch (error) {
         console.error("Error fetching top companies:", error);
       }

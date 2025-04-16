@@ -1,85 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/learningSuggest/style.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
-// Data kursus
-const courses = [
-  {
-    id: 1,
-    title: "English Course",
-    description:
-      "Tingkatkan Skill Inggris mu dengan belajar tentang grammar, vocab dll di Coursera!",
-    price: "Rp.252.000",
-    link: "https://www.coursera.org/learn/careerdevelopment",
-    image: "img/courses/coursera.png",
-  },
-  {
-    id: 2,
-    title: "Android Developer",
-    description:
-      "Pelajari bagaimana cara menyusun kode hingga menjadi aplikasi yang menarik!",
-    price: "Rp.1.500.000",
-    link: "https://www.dicoding.com/learningpaths/7",
-    image: "img/courses/dicoding.png",
-  },
-  {
-    id: 3,
-    title: "English Course",
-    description:
-      "Tingkatkan Skill Inggris mu dengan belajar tentang grammar, vocab dll di Coursera!",
-    price: "Rp.252.000",
-    link: "https://www.coursera.org",
-    image: "img/courses/udemy.png",
-  },
-  {
-    id: 4,
-    title: "English Course",
-    description:
-      "Tingkatkan Skill Inggris mu dengan belajar tentang grammar, vocab dll di Coursera!",
-    price: "Rp.252.000",
-    link: "https://www.coursera.org",
-    image: "img/courses/dicoding.png",
-  },
-  {
-    id: 5,
-    title: "English Course",
-    description:
-      "Tingkatkan Skill Inggris mu dengan belajar tentang grammar, vocab dll di Coursera!",
-    price: "Rp.252.000",
-    link: "https://www.coursera.org",
-    image: "img/courses/coursera.png",
-  },
-  {
-    id: 6,
-    title: "English Course",
-    description:
-      "Tingkatkan Skill Inggris mu dengan belajar tentang grammar, vocab dll di Coursera!",
-    price: "Rp.252.000",
-    link: "https://www.coursera.org",
-    image: "img/courses/skillshare.png",
-  },
-  {
-    id: 7,
-    title: "English Course",
-    description:
-      "Tingkatkan Skill Inggris mu dengan belajar tentang grammar, vocab dll di Coursera!",
-    price: "Rp.252.000",
-    link: "https://www.coursera.org",
-    image: "img/courses/skilvul.png",
-  },
-  {
-    id: 8,
-    title: "English Course",
-    description:
-      "Tingkatkan Skill Inggris mu dengan belajar tentang grammar, vocab dll di Coursera!",
-    price: "Rp.252.000",
-    link: "https://www.coursera.org",
-    image: "img/courses/dicoding.png",
-  },
-];
+import axios from "axios";
 
 const LearningResource = () => {
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_BASE_URL}/courses`,
+          {
+            withCredentials: true, // This enables sending cookies and credentials
+          }
+        );
+
+        console.log(response.data.learningSuggests);
+        setCourses(response.data.learningSuggests);
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+      }
+    };
+
+    fetchCourses();
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -109,7 +56,7 @@ const LearningResource = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={course.image} alt={course.title} />
+              <img src={course.imageUrl} alt={course.title} />
               <div className="course-content">
                 <div className="course-title">{course.title}</div>
                 <div className="course-desc">{course.description}</div>

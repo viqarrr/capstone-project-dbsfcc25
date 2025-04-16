@@ -9,7 +9,7 @@ const TopJobs = () => {
       try {
         const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/jobs`);
         console.log(response.data.jobs);
-        setTopJobs(response.data.jobs.slice(0, 5));
+        setTopJobs(response.data.jobs.slice(0, 6));
       } catch (error) {
         console.error("Error fetching top jobs:", error);
       }

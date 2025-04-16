@@ -9,6 +9,7 @@ import Company from "./pages/Company";
 import CompanyDetail from "./pages/CompanyDetail";
 import LearningResource from "./pages/LearningResource";
 import LearningResourceDetail from "./pages/LearningResourceDetail";
+import FillProfile from "./pages/FillProfile";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/fillprofile" element={<FillProfile />} />
         <Route path="/jobs" element={<Job />} />
         <Route path="/jobs/:id" element={<JobDetail />} />
         <Route path="/companies" element={<Company />} />

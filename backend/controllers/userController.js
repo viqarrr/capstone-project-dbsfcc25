@@ -6,9 +6,11 @@ import cloudinary from "../utils/cloudinary.js";
 
 export const register = async (req, res) => {
     try {
-        const { fullname, email, phoneNumber, password, role } = req.body;
+        const { email, phoneNumber, password, role } = req.body;
          
-        if (!fullname || !email || !phoneNumber || !password || !role) {
+        console.log(req.body)
+
+        if (!email || !phoneNumber || !password || !role) {
             return res.status(400).json({
                 message: "Something is missing",
                 success: false
@@ -26,7 +28,6 @@ export const register = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         await User.create({
-            fullname,
             email,
             phoneNumber,
             password: hashedPassword,
@@ -46,6 +47,8 @@ export const login = async (req, res) => {
     try {
         const { email, password } = req.body;
         
+        console.log(email,password)
+
         if (!email || !password) {
             return res.status(400).json({
                 message: "Something is missing",
@@ -84,7 +87,7 @@ export const login = async (req, res) => {
             profile: user.profile
         }
 
-        return res.status(200).cookie("token", token, { maxAge: 1 * 24 * 60 * 60 * 1000 }).json({
+        return res.status(200).cookie("token", token, { maxAge: 1 * 24 * 60 * 60 * 1000 , httpsOnly: true}).json({
             message: `Welcome back ${user.fullname}`,
             user,
             success: true
@@ -107,7 +110,7 @@ export const logout = async (req, res) => {
 
 export const updateProfile = async (req, res) => {
     try {
-        const { fullname, email, phoneNumber, bio, skills } = req.body;
+        const { fullname, email, phoneNumber, skills, hobbies } = req.body;
         
         const file = req.file;
         // Cloudinary profile picture
@@ -117,6 +120,11 @@ export const updateProfile = async (req, res) => {
         let skillsArray;
         if (skills) {
             skillsArray = skills.split(",");
+        }
+        
+        let hobbiesArray;
+        if (hobbies) {
+            hobbiesArray = hobbies.split(",");
         }
         const userId = req.id; // Middleware authentication
         console.log(userId)
@@ -141,14 +149,9 @@ export const updateProfile = async (req, res) => {
         if (fullname) user.fullname = fullname;
         if (email) user.email = email;
         if (phoneNumber) user.phoneNumber = phoneNumber;
-        if (bio) user.profile.bio = bio;
         if (skills) user.profile.skills = skillsArray;
+        if (hobbies) user.profile.hobbies = hobbiesArray;
       
-        // Resume handler
-        // if (cloudResponse) {
-        //     user.profile.resume = cloudResponse.secure_url; // Save the Cloudinary URL
-        //     user.profile.resumeOriginalName = file.originalname; // Save the original file name
-        // }
 
         await user.save();
 

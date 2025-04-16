@@ -1,6 +1,7 @@
 import React from "react";
+import SearchBar from "./SearchBar";
 
-const Hero = () => {
+const Hero = ({ search }) => {
   return (
     <section className="hero">
       <div className="hero-content">
@@ -17,13 +18,7 @@ const Hero = () => {
           />
         </div>
       </div>
-      <div className="search-bar">
-        <span className="material-symbols-outlined">search</span>
-        <input type="text" placeholder="Nama Pekerjaan" />
-        <span className="material-symbols-outlined">place</span>
-        <input type="text" placeholder="Tempat, Kota atau Negara" />
-        <button>Cari</button>
-      </div>
+      {search && <SearchBar/>}
     </section>
   );
 };
