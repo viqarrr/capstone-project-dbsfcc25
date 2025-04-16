@@ -27,16 +27,22 @@ const Navbar = () => {
       </nav>
       {isAuthenticated() ? (
         <div className="user-profile">
-          <span>Akun Saya</span>
-          <img
-            src="https://img.icons8.com/ios-filled/24/737373/user-male-circle.png"
-            alt="User  Icon"
-          />
+          <Link to="/fillprofile">
+            <span>Akun Saya</span>
+            <img
+              src="https://img.icons8.com/ios-filled/24/737373/user-male-circle.png"
+              alt="User  Icon"
+            />
+          </Link>
         </div>
       ) : (
         <div className="auth-buttons">
-          <Link to="/login" className="Masuk">Masuk</Link>
-          <Link to="/register" className="Daftar">Daftar</Link>
+          <Link to="/login" className="Masuk">
+            Masuk
+          </Link>
+          <Link to="/register" className="Daftar">
+            Daftar
+          </Link>
         </div>
       )}
     </header>

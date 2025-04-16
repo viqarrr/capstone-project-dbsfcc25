@@ -10,19 +10,12 @@ const LoginForm = () => {
     try {
         const requestBody = { email, password };
         console.log(requestBody)
-        const response = await axios.post(`http://localhost:8000/api/v1/users/login`, requestBody, {
+        const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/users/login`, requestBody, {
           withCredentials: true
       });
 
-      console.log(response)
-
     } catch (error) {
-        console.error(error);
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: error.message.response
-        });
+      
     }
   };
   
@@ -36,8 +29,8 @@ const LoginForm = () => {
 
   const onSubmit = async (data) => {
     const userData = { email: data.email };
-    login(userData);
     onLogin( data.email, data.password );
+    login(userData);
     console.log("User  logged in:", userData);
     navigate("/")
   };

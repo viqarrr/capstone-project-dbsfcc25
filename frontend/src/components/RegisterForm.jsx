@@ -1,9 +1,22 @@
+import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { onRegister } from "../services/api";
 
 const RegisterForm = () => {
+  const onRegister = async (email, password, phoneNumber, role) => {
+    try {
+        const requestBody = { email, phoneNumber, password,  role };
+        console.log(requestBody)
+        const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/users/register`, requestBody, {
+          withCredentials: true
+      });
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
+  };
+  
   const {
     register,
     handleSubmit,
@@ -20,7 +33,7 @@ const RegisterForm = () => {
     };
     onRegister(data.email, data.password, data.phoneNumber, data.role);
     console.log("User  Registered:", userData);
-    navigate("/fillprofile");
+    navigate("/login");
   };
 
   return (
